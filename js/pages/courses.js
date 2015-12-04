@@ -44,7 +44,7 @@ pages.courses.prototype.location = 'All';
 
 // course type filter
 pages.courses.prototype.types = [{name: "All Types", code: 'skip'}, {name: "Lectures Only", code: '.class:not(.LEC)'},{name: "Tutorials", code: '.class:not(.TUT)'},{name: "Labs", code: '.class:not(.LAB)'}];
-pages.courses.prototype.type = '.class:not(.LEC)';
+pages.courses.prototype.type = 'skip';
 
 // course days filter
 pages.courses.prototype.days = [{name: "All Days", code: 'skip'}, {name: "Mon, Wed, Fri", code: '.class.Tue, .class.Thu'},{name: "Tue, Thu", code: '.class.Mon, .class.Wed, .class.Fri'},{name: "Monday", code: '.class.Tue, .class.Wed, .class.Thu, .class.Fri'},{name: "Tuesday", code: '.class.Mon, .class.Wed, .class.Thu, .class.Fri'},{name: "Wednesday", code: '.class.Mon, .class.Tue, .class.Thu, .class.Fri'},{name: "Thursday", code: '.class.Mon, .class.Tue, .class.Wed, .class.Fri'},{name: "Friday", code: '.class.Mon, .class.Tue, .class.Wed, .class.Thu'}];
@@ -52,7 +52,7 @@ pages.courses.prototype.day = 'skip';
 
 // course available filter
 pages.courses.prototype.availables = [{name: "Available", code: '.filled'}, {name: "Unavailable", code: '.open'},{name: "Both", code: 'skip'}];
-pages.courses.prototype.available = '.filled';
+pages.courses.prototype.available = 'skip';
 
 pages.courses.prototype.draw = function(callback) {
 

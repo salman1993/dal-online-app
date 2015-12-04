@@ -147,8 +147,10 @@ dalonline.prototype.getFinalGrades = function(callback) {
 	// first login again
 	this.login(this.username, this.password, function(status) {
 
+		var year = (self.getSeasonAsNumber() === 10) ? (self.year + 1) : self.year //increase for Fall
+
 		// grab course info page
-		post('https://dalonline.dal.ca/PROD/bwskogrd.P_ViewGrde', { term_in: self.year + 1 + "" + self.getSeasonAsNumber() }, function(data) {
+		post('https://dalonline.dal.ca/PROD/bwskogrd.P_ViewGrde', { term_in: year + "" + self.getSeasonAsNumber() }, function(data) {
 
 			// find relavent data from this page
 			var courseInfo = data.match(/Course Title([\s\S]*?)\/TABLE/gim);
@@ -161,7 +163,8 @@ dalonline.prototype.getFinalGrades = function(callback) {
 			}
 
 			// divide the current HTML into an array each entry representing the html of a row in the grades table
-			courseInfo = courseInfo[0].split('</TR>');
+			// courseInfo = courseInfo[0].split('</TR>');
+			courseInfo = courseInfo[0].split('</tr>');
 
 			// build object of data
 			var buffer = [];
@@ -343,7 +346,9 @@ dalonline.prototype.getTimetable = function(subject, district, callback, n) {
 			var row = rowsHTML[i];
 
 			// pull out the title
-			var title = row.match(/<B>(.*?)<\/B>/g);
+			// var title = row.match(/<B>(.*?)<\/B>/g);
+			var title = row.match(/<B>(.*?)<\/B>/gi);
+
 
 			// abort
 			if(!title || title.length == 0)

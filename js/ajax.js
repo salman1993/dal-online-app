@@ -31,7 +31,7 @@ function get(url, data, callback) {
 			buffer += '&' + key + '=' + encodeURIComponent(data[key]);
 
 		// append data to url
-		url += '?' + buffer.substr(1);
+		url += '?' + buffer.substr(1); //remove the first & from buffer
 
 	}
 	
@@ -66,7 +66,8 @@ function post(url, data, callback) {
 	// open page
 	req.open('POST', url, true);
 	req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	req.setRequestHeader("Connection", "close");
+	//req.setRequestHeader("Connection", "close");
+	req.setRequestHeader("Access-Control-Allow-Origin", "*");
 	
 	// if there is data
 	if(data && typeof data == 'object') {
@@ -79,7 +80,7 @@ function post(url, data, callback) {
 			buffer += '&' + key + '=' + encodeURIComponent(data[key]);
 		
 		// set length of params
-		req.setRequestHeader("Content-length", buffer.length - 1);
+		//req.setRequestHeader("Content-length", buffer.length - 1);
 
 		// fire send request
 		req.send(buffer.substr(1));
