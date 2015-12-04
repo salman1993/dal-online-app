@@ -1,0 +1,19 @@
+.no480, .no320 {
+	display: none !important;
+}
+
+#topBar #title #previous, #topBar #title #next {
+	width: 35px;
+}
+
+#topBar #title .text {
+	font-size: 16px;
+}
+
+.schedule .class td {
+	font-size: 10px !important;
+}
+
+.schedule table tr.dayTitle td {
+	font-size: 14px;
+}
